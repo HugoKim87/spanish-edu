@@ -18,11 +18,23 @@
 
 /* ===================== 1. STATE & UTILS ===================== */
 const state = {
-  topicId: TOPICS[0]?.id,
+  topicId: TOPICS.length ? TOPICS[TOPICS.length - 1].id : undefined, // 기본 선택: 최신 Day
+  sortOrder: 'desc', // 주제 정렬: 'desc'(최신순) | 'asc'(오래된순)
   learned: new Set(),
   marks: {},      // cardKey -> 'hard' | 'know' | null
   matchBest: {},  // topicId -> seconds
 };
+
+// Day 번호 추출 (id에서 숫자만) — 정렬 기준
+function dayNumOf(t) {
+  const n = parseInt(String(t.id).replace(/\D/g, ''), 10);
+  return isNaN(n) ? -Infinity : n;
+}
+// 현재 정렬 순서가 적용된 주제 목록 반환
+function sortedTopics() {
+  const arr = [...TOPICS].sort((a, b) => dayNumOf(a) - dayNumOf(b)); // 오름차순 기본
+  return state.sortOrder === 'desc' ? arr.reverse() : arr;
+}
 
 function getTopic() {
   return TOPICS.find(t => t.id === state.topicId);
@@ -56,9 +68,9 @@ function updateLearnedCount() {
 
 /* ===================== 2. INIT & HOME RENDERERS ===================== */
 function init() {
-  // 데이터(TOPICS)의 첫 번째 Day를 항상 기본 선택으로 보장
+  // 선택된 Day가 데이터에 없으면, 현재 정렬 기준의 첫 번째(기본=최신)로 보장
   if (TOPICS.length && !TOPICS.some(t => t.id === state.topicId)) {
-    state.topicId = TOPICS[0].id;
+    state.topicId = sortedTopics()[0].id;
   }
   const totalCards = TOPICS.reduce((s, t) => s + t.cards.length, 0);
   document.getElementById('totalWords').textContent = totalCards + '+';
@@ -82,6 +94,20 @@ function init() {
     }
   }
 
+  // 정렬 토글 버튼 연결 (최신순/오래된순)
+  const sortToggle = document.getElementById('sortToggle');
+  if (sortToggle) {
+    sortToggle.querySelectorAll('.sort-btn').forEach(btn => {
+      btn.onclick = () => {
+        state.sortOrder = btn.dataset.sort;
+        sortToggle.querySelectorAll('.sort-btn').forEach(b =>
+          b.classList.toggle('active', b === btn)
+        );
+        renderTopics(); // 칩 재정렬 (선택된 Day는 그대로 유지)
+      };
+    });
+  }
+
   renderTopics();
   renderSetsGrid();
 }
@@ -89,7 +115,7 @@ function init() {
 function renderTopics() {
   const bar = document.getElementById('topicBar');
   bar.innerHTML = '';
-  TOPICS.forEach(t => {
+  sortedTopics().forEach(t => {
     const btn = document.createElement('button');
     btn.className = 'topic-chip' + (t.id === state.topicId ? ' active' : '');
     btn.innerHTML = `
@@ -184,7 +210,7 @@ function speak(text, lang = 'es-ES') {
   window.speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = lang;
-  u.rate = 0.82;
+  u.rate = 0.92;
   if (ttsState.spanishVoice) u.voice = ttsState.spanishVoice;
   window.speechSynthesis.speak(u);
 }
