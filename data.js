@@ -654,7 +654,7 @@ const TOPICS = [
       { es: 'Cuando tengo hambre, compro pizza.', ko: '배고플 때 피자를 산다.' },
     ],
   },
- {
+  {
     id: 'day33', emoji: '🎨',
     title: 'Day 33 · 취미',
     subtitle: '¿Cuál es mi pasatiempo favorito?',
@@ -685,7 +685,7 @@ const TOPICS = [
       { es: '¿Cuál es tu pasatiempo favorito?', ko: '너의 취미는 무엇이야?' },
     ],
   },
-     {
+  {
     id: 'day34', emoji: '📺',
     title: 'Day 34 · 유튜브',
     subtitle: '¿Qué veo en YouTube?',
@@ -716,7 +716,7 @@ const TOPICS = [
       { es: '¿Qué ves en YouTube?', ko: '너는 유튜브에서 뭘 봐?' },
     ],
   },
-     {
+  {
     id: 'day35', emoji: '🛗',
     title: 'Day 35 · 층/엘리베이터',
     subtitle: '¿A qué piso voy?',
@@ -759,7 +759,7 @@ const TOPICS = [
       { es: 'Mi habitación está en el piso veinte.', ko: '내 방은 20층에 있다.' },
     ],
   },
-    {
+  {
     id: 'day36', emoji: '🛗',
     title: 'Day 36 · 층 이동 표현',
     subtitle: '¿A qué piso voy? (a vs en)',
