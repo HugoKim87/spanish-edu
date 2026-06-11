@@ -619,7 +619,7 @@ button:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 }
 .test-submit:hover { background: var(--primary-dark); }
 
-.test-result { text-align: center; padding: 20px 10px; }
+.test-result { text-align: center; }
 .test-score-circle {
   width: 140px; height: 140px; border-radius: 50%;
   margin: 0 auto 16px;
@@ -688,8 +688,8 @@ button:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 .match-tile.gone { visibility: hidden; }
 .match-tile[data-lang="es"] { background: linear-gradient(135deg, #ffffff, #fafbff); color: var(--primary); }
 .match-tile[data-lang="ko"] { background: linear-gradient(135deg, #fffdf5, #fff8dc); color: #8a6d00; }
-.match-result { text-align: center; padding: 28px 12px; }
-.match-result h2 { font-size: 32px; font-weight: 900; color: var(--primary); margin-bottom: 6px; letter-spacing: -.03em; }
+.match-result { text-align: center; }
+.match-result .result-heading { color: var(--primary); letter-spacing: -.03em; }
 .match-time-big { font-size: 56px; font-weight: 900; letter-spacing: -.04em; color: var(--text); margin: 12px 0; }
 .match-best { font-size: 14px; color: var(--text-mute); margin-bottom: 18px; }
 
@@ -709,6 +709,28 @@ button:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
   transition: border-color .15s;
 }
 .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+/* 결과화면 등에서 버튼을 가로로 나란히 둘 때 간격 */
+.btn-inline { margin-left: 8px; }
+
+/* ---------- RESULT / 완료·결과 화면 (공통) ---------- */
+.result-screen {
+  text-align: center;
+  padding: 40px 12px;
+}
+.result-emoji { font-size: 60px; margin-bottom: 8px; }
+.result-heading {
+  font-size: 28px; font-weight: 900;
+  letter-spacing: -.02em; margin-bottom: 8px;
+}
+.result-message { color: var(--text-soft); margin-bottom: 18px; }
+.result-actions { margin-top: 4px; }
+/* 결과화면 안에서는 점수원/큰시간 등 extra 요소 간격 보정 */
+.test-result .result-screen,
+.match-result .result-screen { padding-top: 8px; }
+
+/* 테스트 문항/리뷰 보조 텍스트 (인라인 style 대체) */
+.test-q-hint { color: var(--text-mute); font-size: 14px; font-weight: 500; }
+.test-noanswer { color: var(--text-mute); }
 
 /* ---------- FOOTER ---------- */
 .footer {
