@@ -148,10 +148,19 @@ function renderSetsGrid() {
     const el = document.createElement('div');
     el.className = 'set-card';
     el.innerHTML = `
-      <div class="set-emoji">${t.emoji}</div>
+      <div class="set-top">
+        <div class="set-icon">${t.emoji}</div>
+        <button class="set-speak" title="발음 듣기" aria-label="발음 듣기">
+          <span class="material-symbols-outlined">volume_up</span>
+        </button>
+      </div>
       <h4>${c.es}</h4>
       <div class="set-meta">${c.ko}</div>
     `;
+    el.querySelector('.set-speak').onclick = (e) => {
+      e.stopPropagation();
+      speak(c.es, 'es-ES');
+    };
     grid.appendChild(el);
   });
 }
@@ -277,6 +286,75 @@ function openMode(mode) {
   if (mode === 'learn')      runLearn(t);
   if (mode === 'test')       runTest(t);
   if (mode === 'match')      runMatch(t);
+}
+
+/* ===================== 4-b. ALL WORDS (전체 단어 보기) ===================== */
+function openAllWords() {
+  activeMode = 'allwords';
+  viewer.classList.add('open');
+  const totalCards = TOPICS.reduce((s, t) => s + t.cards.length, 0);
+  titleEl.innerHTML = `모든 단어 <span class="small">${TOPICS.length}개 주제 · ${totalCards}개</span>`;
+  progressBar.style.width = '100%';
+
+  // 검색창 + 결과 컨테이너
+  body.innerHTML = `
+    <div class="allwords-search">
+      <input id="allWordsSearch" type="text" placeholder="🔍 스페인어 또는 한국어로 검색..." autocomplete="off" />
+    </div>
+    <div id="allWordsResult"></div>
+  `;
+
+  const input = document.getElementById('allWordsSearch');
+  const result = document.getElementById('allWordsResult');
+  // 현재 정렬 순서를 그대로 따름 (최신순/오래된순)
+  const topics = sortedTopics();
+
+  function render(query) {
+    const q = (query || '').trim().toLowerCase();
+    let html = '';
+    let shown = 0;
+
+    topics.forEach(t => {
+      const matched = q
+        ? t.cards.filter(c => c.es.toLowerCase().includes(q) || c.ko.toLowerCase().includes(q))
+        : t.cards;
+      if (!matched.length) return;
+      shown += matched.length;
+
+      html += `<div class="allwords-day-group">
+        <div class="allwords-day-head">
+          <span class="emoji">${t.emoji}</span>
+          <span>${t.title}</span>
+          <span class="day-count">${matched.length}</span>
+        </div>`;
+      matched.forEach(c => {
+        html += `<div class="allwords-row">
+          <div class="aw-es">${c.es}</div>
+          <div class="aw-ko">${c.ko}</div>
+          <button class="aw-speak" data-es="${escapeAttr(c.es)}" title="발음 듣기" aria-label="발음 듣기">
+            <span class="material-symbols-outlined">volume_up</span>
+          </button>
+        </div>`;
+      });
+      html += `</div>`;
+    });
+
+    if (!shown) {
+      result.innerHTML = `<div class="allwords-empty">"${query}"에 해당하는 단어가 없어요.</div>`;
+      return;
+    }
+    result.innerHTML = `<div class="allwords-count">${shown}개 단어</div>` + html;
+
+    // 발음 버튼 연결
+    result.querySelectorAll('.aw-speak').forEach(btn => {
+      btn.onclick = () => speak(btn.dataset.es, 'es-ES');
+    });
+    refreshSpeakButtons();
+  }
+
+  input.oninput = () => render(input.value);
+  render('');
+  input.focus();
 }
 
 /* ===================== 5. MODE: FLASHCARDS ===================== */
