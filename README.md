@@ -49,14 +49,18 @@ spanish-learning/
 ## ⚙️ 학습 로직 수정
 
 `app.js`는 섹션별로 나뉘어 있습니다:
-1. STATE & UTILS
+0. CONFIG (튜닝 상수 — 카드 수, 발음 속도, 애니메이션 시간 등을 한곳에서 관리)
+1. STATE & UTILS (상태 + DOM·채점 헬퍼)
 2. INIT & HOME RENDERERS
 3. TTS (발음 듣기)
-4. VIEWER (모달 공통)
+4. VIEWER (모달 공통 + 결과화면 빌더)
+4-b. ALL WORDS (전체 단어 보기 + 검색)
 5. MODE: FLASHCARDS
 6. MODE: LEARN
 7. MODE: TEST
 8. MODE: MATCH
+
+> 동작 수치(예: 객관식 보기 수, 매치 쌍 개수, 발음 속도)를 바꾸려면 맨 위 `CONFIG` 객체만 수정하면 됩니다.
 
 ## 🌍 기능
 
