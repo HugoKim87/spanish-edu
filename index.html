@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>¡Vamos! · 스페인어 학습</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -70,7 +72,7 @@
   <div class="modes">
     <button class="mode-card" data-mode="flashcards" onclick="openMode('flashcards')">
       <div>
-        <div class="mode-icon">🃏</div>
+        <div class="mode-icon"><span class="material-symbols-outlined">style</span></div>
         <h3>낱말카드</h3>
         <div class="mode-desc">앞면 스페인어 ↔ 뒷면 한국어. 클릭으로 뒤집고 발음을 들어보세요.</div>
       </div>
@@ -78,7 +80,7 @@
     </button>
     <button class="mode-card" data-mode="learn" onclick="openMode('learn')">
       <div>
-        <div class="mode-icon">🧠</div>
+        <div class="mode-icon"><span class="material-symbols-outlined">psychology</span></div>
         <h3>학습하기</h3>
         <div class="mode-desc">객관식 → 빈칸 채우기. 오답은 자동 반복 출제됩니다.</div>
       </div>
@@ -86,7 +88,7 @@
     </button>
     <button class="mode-card" data-mode="test" onclick="openMode('test')">
       <div>
-        <div class="mode-icon">📝</div>
+        <div class="mode-icon"><span class="material-symbols-outlined">edit_document</span></div>
         <h3>테스트</h3>
         <div class="mode-desc">선택형·진위형·단답형이 섞인 종합 시험. 점수와 오답 리뷰까지.</div>
       </div>
@@ -94,7 +96,7 @@
     </button>
     <button class="mode-card" data-mode="match" onclick="openMode('match')">
       <div>
-        <div class="mode-icon">⚡</div>
+        <div class="mode-icon"><span class="material-symbols-outlined">bolt</span></div>
         <h3>카드 맞추기</h3>
         <div class="mode-desc">스페인어와 한국어 짝을 빠르게 맞춰보세요. 시간 기록 도전!</div>
       </div>
@@ -111,6 +113,11 @@
     </div>
   </div>
   <div class="sets-grid" id="setsGrid"></div>
+  <div class="view-all-wrap">
+    <button class="btn-view-all" onclick="openAllWords()">
+      모든 단어 보기 <span class="material-symbols-outlined">arrow_forward</span>
+    </button>
+  </div>
 </section>
 
 <footer class="footer" id="footerText">
