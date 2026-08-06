@@ -23,6 +23,7 @@
 const TOPICS = [
   {
     id: 'day1', emoji: '🏢',
+    category: '장소·활동',
     title: 'Day 1 · 사무실',
     subtitle: '¿Qué hago en mi oficina?',
     cards: [
@@ -46,6 +47,7 @@ const TOPICS = [
   },
   {
     id: 'day2', emoji: '☕',
+    category: '장소·활동',
     title: 'Day 2 · 카페',
     subtitle: '¿Qué hago en la cafetería?',
     cards: [
@@ -69,6 +71,7 @@ const TOPICS = [
   },
   {
     id: 'day3', emoji: '🌳',
+    category: '장소·활동',
     title: 'Day 3 · 공원',
     subtitle: '¿Qué hago en el parque?',
     cards: [
@@ -92,6 +95,7 @@ const TOPICS = [
   },
   {
     id: 'day4', emoji: '📚',
+    category: '장소·활동',
     title: 'Day 4 · 도서관',
     subtitle: '¿Qué hago en la biblioteca?',
     cards: [
@@ -115,6 +119,7 @@ const TOPICS = [
   },
   {
     id: 'day5', emoji: '🏋️',
+    category: '장소·활동',
     title: 'Day 5 · 헬스장',
     subtitle: '¿Qué hago en el gimnasio?',
     cards: [
@@ -133,6 +138,7 @@ const TOPICS = [
   },
   {
     id: 'day6', emoji: '💻',
+    category: '집·살림',
     title: 'Day 6 · 컴퓨터/사무',
     subtitle: '¿Qué hago con mi computadora?',
     cards: [
@@ -151,6 +157,7 @@ const TOPICS = [
   },
   {
     id: 'day7', emoji: '🥕',
+    category: '집·살림',
     title: 'Day 7 · 채소 손질',
     subtitle: '¿Qué hago con las verduras? 1',
     cards: [
@@ -169,6 +176,7 @@ const TOPICS = [
   },
   {
     id: 'day8', emoji: '🍳',
+    category: '집·살림',
     title: 'Day 8 · 주방/요리',
     subtitle: '¿Qué hago con las verduras? 2',
     cards: [
@@ -187,6 +195,7 @@ const TOPICS = [
   },
   {
     id: 'day9', emoji: '🎒',
+    category: '집·살림',
     title: 'Day 9 · 소지품 (일상)',
     subtitle: '¿Qué tengo en mi bolso?',
     cards: [
@@ -206,6 +215,7 @@ const TOPICS = [
   },
   {
     id: 'day10', emoji: '👜',
+    category: '집·살림',
     title: 'Day 10 · 소지품 (여행)',
     subtitle: '¿Qué llevo en mi maleta?',
     cards: [
@@ -225,6 +235,7 @@ const TOPICS = [
   },
   {
     id: 'day11', emoji: '✈️',
+    category: '장소·활동',
     title: 'Day 11 · 공항',
     subtitle: '¿Qué hago en el aeropuerto?',
     cards: [
@@ -243,6 +254,7 @@ const TOPICS = [
   },
   {
     id: 'day12', emoji: '🏖️',
+    category: '장소·활동',
     title: 'Day 12 · 해변',
     subtitle: '¿Qué hago en la playa?',
     cards: [
@@ -262,6 +274,7 @@ const TOPICS = [
   },
   {
     id: 'day13', emoji: '🛒',
+    category: '쇼핑',
     title: 'Day 13 · 마트',
     subtitle: '¿Qué hago en el supermercado?',
     cards: [
@@ -281,6 +294,7 @@ const TOPICS = [
   },
   {
     id: 'day14', emoji: '🏥',
+    category: '건강·몸',
     title: 'Day 14 · 병원',
     subtitle: '¿Qué hago en el hospital?',
     cards: [
@@ -300,6 +314,7 @@ const TOPICS = [
   },
   {
     id: 'day15', emoji: '☕',
+    category: '장소·활동',
     title: 'Day 15 · 주말',
     subtitle: '¿Qué hago el fin de semana?',
     cards: [
@@ -319,6 +334,7 @@ const TOPICS = [
   },
   {
     id: 'day16', emoji: '👨‍👩‍👧',
+    category: '사람·감정',
     title: 'Day 16 · 가족',
     subtitle: '¿Quiénes son mi familia?',
     cards: [
@@ -338,6 +354,7 @@ const TOPICS = [
   },
   {
     id: 'day17', emoji: '🤗',
+    category: '사람·감정',
     title: 'Day 17 · 누구랑?',
     subtitle: '¿Con quién estoy?',
     cards: [
@@ -357,6 +374,7 @@ const TOPICS = [
   },
   {
     id: 'day18', emoji: '🌴',
+    category: '장소·활동',
     title: 'Day 18 · 휴가',
     subtitle: '¿Qué hago en las vacaciones?',
     cards: [
@@ -376,6 +394,7 @@ const TOPICS = [
   },
   {
     id: 'day19', emoji: '🏦',
+    category: '장소·활동',
     title: 'Day 19 · 은행',
     subtitle: '¿Qué hago en el banco?',
     cards: [
@@ -395,6 +414,7 @@ const TOPICS = [
   },
   {
     id: 'day20', emoji: '🎬',
+    category: '장소·활동',
     title: 'Day 20 · 영화관',
     subtitle: '¿Qué hago en el cine?',
     cards: [
@@ -413,6 +433,7 @@ const TOPICS = [
   },
   {
     id: 'day21', emoji: '👗',
+    category: '쇼핑',
     title: 'Day 21 · 옷가게',
     subtitle: '¿Qué hago en la tienda de ropa?',
     cards: [
@@ -432,6 +453,7 @@ const TOPICS = [
   },
   {
     id: 'day22', emoji: '💊',
+    category: '쇼핑',
     title: 'Day 22 · 약국',
     subtitle: '¿Qué hago en la farmacia?',
     cards: [
@@ -451,6 +473,7 @@ const TOPICS = [
   },
   {
     id: 'day23', emoji: '🏨',
+    category: '장소·활동',
     title: 'Day 23 · 호텔',
     subtitle: '¿Qué hago en el hotel?',
     cards: [
@@ -469,6 +492,7 @@ const TOPICS = [
   },
   {
     id: 'day24', emoji: '🥩',
+    category: '쇼핑',
     title: 'Day 24 · 정육점',
     subtitle: '¿Qué hago en la carnicería?',
     cards: [
@@ -488,6 +512,7 @@ const TOPICS = [
   },
   {
     id: 'day25', emoji: '👠',
+    category: '쇼핑',
     title: 'Day 25 · 신발가게',
     subtitle: '¿Qué hago en la zapatería?',
     cards: [
@@ -510,6 +535,7 @@ const TOPICS = [
   },
   {
     id: 'day26', emoji: '💍',
+    category: '쇼핑',
     title: 'Day 26 · 보석점',
     subtitle: '¿Qué hago en la joyería?',
     cards: [
@@ -530,6 +556,7 @@ const TOPICS = [
   },
   {
     id: 'day27', emoji: '🎬',
+    category: '취향·문화',
     title: 'Day 27 · 영화 장르',
     subtitle: '¿Qué tipo de película te gusta?',
     cards: [
@@ -549,6 +576,7 @@ const TOPICS = [
   },
   {
     id: 'day28', emoji: '🎵',
+    category: '취향·문화',
     title: 'Day 28 · 음악 장르',
     subtitle: '¿Qué tipo de música escuchas?',
     cards: [
@@ -569,6 +597,7 @@ const TOPICS = [
   },
   {
     id: 'day29', emoji: '😋',
+    category: '취향·문화',
     title: 'Day 29 · 맛/풍미',
     subtitle: '¿Qué sabor tiene?',
     cards: [
@@ -591,6 +620,7 @@ const TOPICS = [
   },
   {
     id: 'day30', emoji: '💪',
+    category: '건강·몸',
     title: 'Day 30 · 건강 관리',
     subtitle: '¿Qué hago para mi salud?',
     cards: [
@@ -612,6 +642,7 @@ const TOPICS = [
   },
   {
     id: 'day31', emoji: '😴',
+    category: '집·살림',
     title: 'Day 31 · 자기 전 루틴',
     subtitle: '¿Qué hago antes de dormir?',
     cards: [
@@ -633,6 +664,7 @@ const TOPICS = [
   },
   {
     id: 'day32', emoji: '🍔',
+    category: '취향·문화',
     title: 'Day 32 · 배고플 때',
     subtitle: '¿Qué compro cuando tengo hambre?',
     cards: [
@@ -656,6 +688,7 @@ const TOPICS = [
   },
   {
     id: 'day33', emoji: '🎨',
+    category: '취향·문화',
     title: 'Day 33 · 취미',
     subtitle: '¿Cuál es mi pasatiempo favorito?',
     cards: [
@@ -687,6 +720,7 @@ const TOPICS = [
   },
   {
     id: 'day34', emoji: '📺',
+    category: '취향·문화',
     title: 'Day 34 · 유튜브',
     subtitle: '¿Qué veo en YouTube?',
     cards: [
@@ -718,6 +752,7 @@ const TOPICS = [
   },
   {
     id: 'day35', emoji: '🛗',
+    category: '기초 개념',
     title: 'Day 35 · 층/엘리베이터',
     subtitle: '¿A qué piso voy?',
     cards: [
@@ -761,6 +796,7 @@ const TOPICS = [
   },
   {
     id: 'day36', emoji: '🛗',
+    category: '기초 개념',
     title: 'Day 36 · 층 이동 표현',
     subtitle: '¿A qué piso voy? (a vs en)',
     cards: [
@@ -795,6 +831,7 @@ const TOPICS = [
   },
   {
     id: 'day37', emoji: '💼',
+    category: '사람·감정',
     title: 'Day 37 · 직업',
     subtitle: '¿A qué me dedico?',
     cards: [
@@ -839,6 +876,7 @@ const TOPICS = [
   },
   {
     id: 'day38', emoji: '🧑‍💼',
+    category: '사람·감정',
     title: 'Day 38 · 직업 소개 표현',
     subtitle: '¿A qué me dedico? (동사 연결)',
     cards: [
@@ -870,6 +908,7 @@ const TOPICS = [
   },
   {
     id: 'day39', emoji: '🌤️',
+    category: '기초 개념',
     title: 'Day 39 · 날씨',
     subtitle: '¿Qué tiempo hace hoy?',
     cards: [
@@ -901,6 +940,7 @@ const TOPICS = [
   },
   {
     id: 'day40', emoji: '🍂',
+    category: '기초 개념',
     title: 'Day 40 · 계절과 달',
     subtitle: '¿Cuál es mi estación favorita?',
     cards: [
@@ -932,6 +972,7 @@ const TOPICS = [
   },
   {
     id: 'day41', emoji: '🚇',
+    category: '기초 개념',
     title: 'Day 41 · 교통수단',
     subtitle: '¿Cómo voy al trabajo?',
     cards: [
@@ -960,6 +1001,7 @@ const TOPICS = [
   },
   {
     id: 'day42', emoji: '🧭',
+    category: '장소·활동',
     title: 'Day 42 · 길 묻기',
     subtitle: '¿Cómo llego allí?',
     cards: [
@@ -987,6 +1029,7 @@ const TOPICS = [
   },
   {
     id: 'day43', emoji: '🍽️',
+    category: '장소·활동',
     title: 'Day 43 · 식당',
     subtitle: '¿Qué pido en el restaurante?',
     cards: [
@@ -1013,6 +1056,7 @@ const TOPICS = [
   },
   {
     id: 'day44', emoji: '🙂',
+    category: '사람·감정',
     title: 'Day 44 · 기분/감정',
     subtitle: '¿Cómo me siento hoy?',
     cards: [
@@ -1040,6 +1084,7 @@ const TOPICS = [
   },
   {
     id: 'day45', emoji: '🏠',
+    category: '집·살림',
     title: 'Day 45 · 집/방',
     subtitle: '¿Qué hay en mi casa?',
     cards: [
@@ -1067,6 +1112,7 @@ const TOPICS = [
   },
   {
     id: 'day46', emoji: '⏰',
+    category: '기초 개념',
     title: 'Day 46 · 시간/하루 일과',
     subtitle: '¿A qué hora hago las cosas?',
     cards: [
@@ -1097,6 +1143,7 @@ const TOPICS = [
   },
   {
     id: 'day47', emoji: '🛍️',
+    category: '쇼핑',
     title: 'Day 47 · 다이소 쇼핑',
     subtitle: '¿Qué compro en Daiso?',
     cards: [
@@ -1161,6 +1208,7 @@ const TOPICS = [
   },
   {
     id: 'day48', emoji: '💄',
+    category: '집·살림',
     title: 'Day 48 · 화장품',
     subtitle: '¿Qué uso para maquillarme?',
     cards: [
@@ -1200,6 +1248,7 @@ const TOPICS = [
   },
   {
     id: 'day49', emoji: '🛋️',
+    category: '쇼핑',
     title: 'Day 49 · 이케아 쇼핑',
     subtitle: '¿Qué compro en IKEA?',
     cards: [
@@ -1235,6 +1284,7 @@ const TOPICS = [
   },
   {
     id: 'day50', emoji: '🤒',
+    category: '건강·몸',
     title: 'Day 50 · 아플 때',
     subtitle: '¿Qué hago cuando estoy enfermo?',
     cards: [
@@ -1274,6 +1324,7 @@ const TOPICS = [
   },
   {
     id: 'day51', emoji: '💊',
+    category: '쇼핑',
     title: 'Day 51 · 약국 쇼핑',
     subtitle: '¿Qué compro en la farmacia?',
     cards: [
@@ -1317,6 +1368,7 @@ const TOPICS = [
   },
   {
     id: 'day52', emoji: '📚',
+    category: '쇼핑',
     title: 'Day 52 · 서점 쇼핑',
     subtitle: '¿Qué compro en la librería?',
     cards: [
@@ -1360,6 +1412,7 @@ const TOPICS = [
 /* 새 Day 추가 예시 (복붙해서 사용하세요)
   {
     id: 'day33', emoji: '🎉',
+    category: '취향·문화',
     title: 'Day 33 · 새 주제',
     subtitle: '¿Qué hago ...?',
     cards: [
