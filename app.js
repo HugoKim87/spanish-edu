@@ -37,6 +37,7 @@ const CONFIG = {
 const state = {
   topicId: TOPICS.length ? TOPICS[TOPICS.length - 1].id : undefined, // 기본 선택: 최신 Day
   sortOrder: 'desc', // 주제 정렬: 'desc'(최신순) | 'asc'(오래된순)
+  category: '전체',  // 카테고리 필터: '전체' 또는 특정 카테고리명
   learned: new Set(),
   marks: {},      // cardKey -> 'hard' | 'know' | null
   matchBest: {},  // topicId -> seconds
@@ -54,8 +55,32 @@ function dayNumOf(t) {
 
 /** 현재 정렬 순서가 적용된 주제 목록 반환 */
 function sortedTopics() {
-  const arr = [...TOPICS].sort((a, b) => dayNumOf(a) - dayNumOf(b)); // 오름차순 기본
+  let arr = [...TOPICS].sort((a, b) => dayNumOf(a) - dayNumOf(b)); // 오름차순 기본
+  // 카테고리 필터 적용 ('전체'가 아니면 해당 카테고리만)
+  if (state.category !== '전체') {
+    arr = arr.filter(t => t.category === state.category);
+  }
   return state.sortOrder === 'desc' ? arr.reverse() : arr;
+}
+
+/**
+ * 데이터에서 카테고리 목록을 자동 추출 (등장 순서 유지).
+ * → data.js에 새 카테고리를 쓰면 필터 버튼도 자동으로 늘어난다.
+ * 맨 앞에 '전체'를 붙여 반환.
+ */
+function categoryList() {
+  const cats = [];
+  TOPICS.forEach(t => {
+    if (t.category && !cats.includes(t.category)) cats.push(t.category);
+  });
+  return ['전체', ...cats];
+}
+
+/** 특정 카테고리의 주제 수 (필터 버튼에 개수 표시용) */
+function countByCategory(cat) {
+  return cat === '전체'
+    ? TOPICS.length
+    : TOPICS.filter(t => t.category === cat).length;
 }
 
 /** 현재 선택된 주제 객체 */
@@ -125,6 +150,7 @@ function init() {
 
   renderDayRange();
   wireSortToggle();
+  renderCategoryFilter();
   renderTopics();
   renderSetsGrid();
 }
@@ -156,6 +182,34 @@ function wireSortToggle() {
       toggle.querySelectorAll('.sort-btn').forEach(b => b.classList.toggle('active', b === btn));
       renderTopics(); // 칩 재정렬 (선택된 Day는 그대로 유지)
     };
+  });
+}
+
+/**
+ * 카테고리 필터 바 렌더링. categoryList()에서 자동 생성되므로
+ * data.js에 새 카테고리를 추가하면 버튼도 자동으로 생긴다.
+ */
+function renderCategoryFilter() {
+  const bar = $('categoryBar');
+  if (!bar) return;
+  bar.innerHTML = '';
+  categoryList().forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'category-chip' + (cat === state.category ? ' active' : '');
+    btn.innerHTML = `${cat} <span class="cat-count">${countByCategory(cat)}</span>`;
+    btn.onclick = () => {
+      state.category = cat;
+      // 필터를 바꾼 뒤, 현재 선택된 Day가 필터 결과에 없으면 첫 번째로 이동
+      const visible = sortedTopics();
+      if (visible.length && !visible.some(t => t.id === state.topicId)) {
+        state.topicId = visible[0].id;
+      }
+      renderCategoryFilter();
+      renderTopics();
+      renderSetsGrid();
+      updateModeSub();
+    };
+    bar.appendChild(btn);
   });
 }
 
